@@ -147,6 +147,11 @@ int subCommand(unsigned char numInputBytes, unsigned char* input, unsigned char*
     return 0;
   }
 
+  if (subCmds[input[0]] == NULL)
+  {
+    return 1; // command not supported
+  }
+
   // Call a subcommand
   int ret = subCmds[input[0]](numInputBytes - 1, input + 1, numResponseBytes, response + 1);
 
