@@ -1,7 +1,8 @@
 #define LUA_32BITS
 #include "src/lua-5.3.4/lua.hpp"
 
-int system(const char* string){
+int system(const char* string)
+{
   // ISO/IEC 9899:TC2 p.317
   // Reference: http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1124.pdf
   // 7.20.4.6 The system function
