@@ -130,8 +130,13 @@ int otaCommand(unsigned char numInputBytes, unsigned char* input, unsigned char*
 
 int luaCommand(unsigned char numInputBytes, unsigned char* input, unsigned char* numResponseBytes, unsigned char* response)
 {
-  char str[numInputBytes];
+  if (numInputBytes > 240) {
+    response[0] = 0x1; // ret_code = FAIL
+    return 0;
+  }
+  char str[numInputBytes + 1];
   memcpy(str, input, numInputBytes);
+  str[numInputBytes] = '\0';
   response[0] = luaL_dostring(L, str);
   *numResponseBytes = 1;
   return 0;
