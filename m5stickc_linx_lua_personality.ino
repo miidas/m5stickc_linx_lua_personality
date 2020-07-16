@@ -11,7 +11,7 @@ lua_State *L;
 
 LinxESP32 *LinxDevice;
 
-boolean restartReq;
+bool restartReq;
 
 const esp_partition_t *nup;
 esp_ota_handle_t otaHandle;
